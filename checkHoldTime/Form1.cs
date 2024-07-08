@@ -68,7 +68,7 @@ namespace checkHoldTime
                     and LOTTYPE in ('P1','P2')  and LOCATION<>'7FQC'    and LOTID  not in ('727010008.1')   and PARTID not like '10VPD7098EA%'  
                        ";
                 // and STAGE='IN3'  and LOTID ='792008807.1' and PARTID like '14VQWW136KOCQ % '
-                sql += " and lotid='745011602.1'";
+                sql += " and lotid='745017502.1'";
                 sql += " order by PARTID,STAGE,LOTID";
                 db.setConn(conn);
                 dsHIST = db.ExcuteDataSet(sql);
@@ -131,14 +131,14 @@ namespace checkHoldTime
                                 else
                                     mSAP = "NONEED";
 
-                                //2024-07-05 判斷是否為OM料號 2024-07-08
-                                sql = "select * from "+ RUNFORM + " where 料號 like '" + str_PARTID.Substring(0, str_PARTID.IndexOf("-") - 1) + @"%'  and OPTICAL_M='ON'";
-                                db.setConn(connRun);
-                                dsOM = db.ExcuteDataSet(sql);
-                                if (dsOM.Tables[0].Rows.Count > 0)
-                                    OM = "NEED";
-                                else
-                                    OM = "NONEED";
+                            //2024-07-05 判斷是否為OM料號 2024-07-08
+                            sql = "select * from " + RUNFORM + " where 料號 like '" + str_PARTID.Substring(0, str_PARTID.IndexOf("-") - 1) + @"%'  and OPTICAL_M='ON'";
+                            db.setConn(connRun);
+                            dsOM = db.ExcuteDataSet(sql);
+                            if (dsOM.Tables[0].Rows.Count > 0)
+                                OM = "NEED";
+                            else
+                                OM = "NONEED";
 
                             string RECPLIST = "";
                                 //'抓改該料號 STAGE所有製程
@@ -167,6 +167,7 @@ namespace checkHoldTime
                             //}
                             //2024-07-08 判斷規則
                             string str_protype = "";
+                            OM = "";
                             if (mSAP == "NEED")
                             {
                                 str_protype="mSAP"  ;
@@ -348,9 +349,11 @@ namespace checkHoldTime
                                                     //迄站 上機或下機時間	
                                                     if (dsHIST3.Tables[0].Rows.Count > 0 && dsHIST3.Tables[0].Rows[0]["EVTIME"] != DBNull.Value) //2024-07-08
                                                     {
-                                                        RUNTIME = (Math.Round(((new TimeSpan(DateTime.Parse(dtHIST2.Rows[0]["EVTIME"].ToString()).Ticks - DateTime.Parse(dsHIST3.Tables[0].Rows[0]["EVTIME"].ToString()).Ticks).TotalMinutes) / 60), 2)).ToString();
-                                                        //RUNTIME = ROUND(DateDiff("n", CDate(rsHIST2("EVTIME")), CDate(rsHIST3("EVTIME"))) / 60, 2)
-                                                        RULETIME = str_HOLETIME;
+                                                    //RUNTIME = (Math.Round(((new TimeSpan(DateTime.Parse(dtHIST2.Rows[0]["EVTIME"].ToString()).Ticks - DateTime.Parse(dsHIST3.Tables[0].Rows[0]["EVTIME"].ToString()).Ticks).TotalMinutes) / 60), 2)).ToString();
+                                                    //2024-07-08
+                                                    RUNTIME = Math.Round((new TimeSpan(DateTime.Parse(dsHIST3.Tables[0].Rows[0]["EVTIME"].ToString()).Ticks- DateTime.Parse(dtHIST2.Rows[0]["EVTIME"].ToString()).Ticks)).TotalHours,2).ToString();
+                                                    //RUNTIME = ROUND(DateDiff("n", CDate(rsHIST2("EVTIME")), CDate(rsHIST3("EVTIME"))) / 60, 2)
+                                                    RULETIME = str_HOLETIME;
                                                         if (decimal.Parse(RUNTIME) > decimal.Parse(RULETIME))
                                                         {
                                                             if (dtRULE.Rows[r]["T_STATE"].ToString() == "上機")
@@ -780,7 +783,7 @@ namespace checkHoldTime
                                                             //2024-07-08
                                                              BODY.Append("<td>" + (new TimeSpan(DateTime.Now.Ticks-DateTime.Parse(dtHIST2.Rows[0]["EVTIME"].ToString()).Ticks ).TotalHours) + "</td><td>" + dtRULE.Rows[r]["ALERTTIME"].ToString() + "</td><td>" + str_HOLETIME + "</td><td>規則HOLD-已超過ALERT時間未到迄製程</td><td bgcolor='yellow'>2</td><td>" + dtHist.Rows[i]["CURMAINQTY"].ToString() + "</td><td>" + dtHist.Rows[i]["MAINMATTYPE"].ToString() + "</td></tr>");
                                                             //2024-07-08
-                                                            RUNTIME = (new TimeSpan(DateTime.Now.Ticks-DateTime.Parse(dtHIST2.Rows[0]["EVTIME"].ToString()).Ticks).TotalHours).ToString();
+                                                            RUNTIME = Math.Round((new TimeSpan(DateTime.Now.Ticks-DateTime.Parse(dtHIST2.Rows[0]["EVTIME"].ToString()).Ticks).TotalHours),2).ToString();
                                                                 RULETIME = str_HOLETIME;
                                                                 RULEMEMO = "規則ALERT-已超過ALERT時間未到迄製程";
                                                                 LIGHT = "2";
