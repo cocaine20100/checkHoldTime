@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SenderMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SenderDisplayName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailCc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailSubject" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsBodyHtml" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Send_Mail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SenderMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SenderDisplayName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailCc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailSubject" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsBodyHtml" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AttachFilePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Send_MailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Send_MailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mail_Relay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SenderMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SenderDisplayName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailCc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailBcc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailSubject" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsBodyHtml" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AttachFilePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mail_RelayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Mail_RelayResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="Send_MailSoapIn">
+    <wsdl:part name="parameters" element="tns:Send_Mail" />
+  </wsdl:message>
+  <wsdl:message name="Send_MailSoapOut">
+    <wsdl:part name="parameters" element="tns:Send_MailResponse" />
+  </wsdl:message>
+  <wsdl:message name="Mail_RelaySoapIn">
+    <wsdl:part name="parameters" element="tns:Mail_Relay" />
+  </wsdl:message>
+  <wsdl:message name="Mail_RelaySoapOut">
+    <wsdl:part name="parameters" element="tns:Mail_RelayResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetIn">
+    <wsdl:part name="SenderMailAddress" type="s:string" />
+    <wsdl:part name="SenderDisplayName" type="s:string" />
+    <wsdl:part name="MailTo" type="s:string" />
+    <wsdl:part name="MailCc" type="s:string" />
+    <wsdl:part name="MailSubject" type="s:string" />
+    <wsdl:part name="IsBodyHtml" type="s:string" />
+    <wsdl:part name="MailBody" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Send_MailHttpGetIn">
+    <wsdl:part name="SenderMailAddress" type="s:string" />
+    <wsdl:part name="SenderDisplayName" type="s:string" />
+    <wsdl:part name="MailTo" type="s:string" />
+    <wsdl:part name="MailCc" type="s:string" />
+    <wsdl:part name="MailSubject" type="s:string" />
+    <wsdl:part name="IsBodyHtml" type="s:string" />
+    <wsdl:part name="MailBody" type="s:string" />
+    <wsdl:part name="AttachFilePath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Send_MailHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Mail_RelayHttpGetIn">
+    <wsdl:part name="SenderMailAddress" type="s:string" />
+    <wsdl:part name="SenderDisplayName" type="s:string" />
+    <wsdl:part name="MailTo" type="s:string" />
+    <wsdl:part name="MailCc" type="s:string" />
+    <wsdl:part name="MailBcc" type="s:string" />
+    <wsdl:part name="MailSubject" type="s:string" />
+    <wsdl:part name="IsBodyHtml" type="s:string" />
+    <wsdl:part name="MailBody" type="s:string" />
+    <wsdl:part name="AttachFilePath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Mail_RelayHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostIn">
+    <wsdl:part name="SenderMailAddress" type="s:string" />
+    <wsdl:part name="SenderDisplayName" type="s:string" />
+    <wsdl:part name="MailTo" type="s:string" />
+    <wsdl:part name="MailCc" type="s:string" />
+    <wsdl:part name="MailSubject" type="s:string" />
+    <wsdl:part name="IsBodyHtml" type="s:string" />
+    <wsdl:part name="MailBody" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Send_MailHttpPostIn">
+    <wsdl:part name="SenderMailAddress" type="s:string" />
+    <wsdl:part name="SenderDisplayName" type="s:string" />
+    <wsdl:part name="MailTo" type="s:string" />
+    <wsdl:part name="MailCc" type="s:string" />
+    <wsdl:part name="MailSubject" type="s:string" />
+    <wsdl:part name="IsBodyHtml" type="s:string" />
+    <wsdl:part name="MailBody" type="s:string" />
+    <wsdl:part name="AttachFilePath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Send_MailHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Mail_RelayHttpPostIn">
+    <wsdl:part name="SenderMailAddress" type="s:string" />
+    <wsdl:part name="SenderDisplayName" type="s:string" />
+    <wsdl:part name="MailTo" type="s:string" />
+    <wsdl:part name="MailCc" type="s:string" />
+    <wsdl:part name="MailBcc" type="s:string" />
+    <wsdl:part name="MailSubject" type="s:string" />
+    <wsdl:part name="IsBodyHtml" type="s:string" />
+    <wsdl:part name="MailBody" type="s:string" />
+    <wsdl:part name="AttachFilePath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Mail_RelayHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SendMail</wsdl:documentation>
+      <wsdl:input message="tns:SendMailSoapIn" />
+      <wsdl:output message="tns:SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send_Mail with File attacment</wsdl:documentation>
+      <wsdl:input message="tns:Send_MailSoapIn" />
+      <wsdl:output message="tns:Send_MailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mail_Relay (To,cc,bcc,File attacment)</wsdl:documentation>
+      <wsdl:input message="tns:Mail_RelaySoapIn" />
+      <wsdl:output message="tns:Mail_RelaySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SendMail</wsdl:documentation>
+      <wsdl:input message="tns:SendMailHttpGetIn" />
+      <wsdl:output message="tns:SendMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send_Mail with File attacment</wsdl:documentation>
+      <wsdl:input message="tns:Send_MailHttpGetIn" />
+      <wsdl:output message="tns:Send_MailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mail_Relay (To,cc,bcc,File attacment)</wsdl:documentation>
+      <wsdl:input message="tns:Mail_RelayHttpGetIn" />
+      <wsdl:output message="tns:Mail_RelayHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SendMail</wsdl:documentation>
+      <wsdl:input message="tns:SendMailHttpPostIn" />
+      <wsdl:output message="tns:SendMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send_Mail with File attacment</wsdl:documentation>
+      <wsdl:input message="tns:Send_MailHttpPostIn" />
+      <wsdl:output message="tns:Send_MailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mail_Relay (To,cc,bcc,File attacment)</wsdl:documentation>
+      <wsdl:input message="tns:Mail_RelayHttpPostIn" />
+      <wsdl:output message="tns:Mail_RelayHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <soap:operation soapAction="http://tempuri.org/Send_Mail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <soap:operation soapAction="http://tempuri.org/Mail_Relay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <soap12:operation soapAction="http://tempuri.org/Send_Mail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <soap12:operation soapAction="http://tempuri.org/Mail_Relay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHttpGet" type="tns:WebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <http:operation location="/Send_Mail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <http:operation location="/Mail_Relay" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHttpPost" type="tns:WebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Send_Mail">
+      <http:operation location="/Send_Mail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mail_Relay">
+      <http:operation location="/Mail_Relay" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://10.13.66.33/ws_sendmail/WS_SendMail.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://10.13.66.33/ws_sendmail/WS_SendMail.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHttpGet" binding="tns:WebServiceHttpGet">
+      <http:address location="http://10.13.66.33/ws_sendmail/WS_SendMail.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHttpPost" binding="tns:WebServiceHttpPost">
+      <http:address location="http://10.13.66.33/ws_sendmail/WS_SendMail.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
